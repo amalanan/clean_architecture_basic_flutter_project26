@@ -3,6 +3,8 @@ import 'package:clean_architecture_project/features/daily_news/presentation/bloc
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widgets/article_tile.dart';
+
 class DailyNews extends StatelessWidget {
   const DailyNews({super.key});
 
@@ -27,9 +29,13 @@ class DailyNews extends StatelessWidget {
           return Center(child: Icon(Icons.refresh));
         }
         if (state is RemoteArticlesDone) {
+          print(state.articles);
+
           return ListView.builder(
             itemBuilder: (context, index) {
-              return ListTile(title: Text('$index'));
+              return ArticleTile(
+                article: state.articles![index],
+              );
             },
             itemCount: state.articles!.length,
           );
