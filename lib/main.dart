@@ -3,16 +3,20 @@ import 'package:clean_architecture_project/features/daily_news/presentation/bloc
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 import 'configs/theme/app_themes.dart' as AppThemes;
 import 'features/daily_news/presentation/pages/home/daily_news.dart';
 import 'injection_container.dart';
 
-void main() {
-  initializeDependencies();
+Future <void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await initializeDependencies();
   runApp(
     DevicePreview(
-      enabled: true, // خليها false لو بدك تطفئيها
+      enabled: false, // خليها false لو بدك تطفئيها
       builder: (context) => const MyApp(),
     ),
   );
