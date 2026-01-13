@@ -4,7 +4,8 @@ import 'package:clean_architecture_project/features/daily_news/domain/repository
 
 import '../../../../core/usecases/usecase.dart';
 
-class GetArticleUseCase implements UseCase<DataState<List<ArticleEntity>>, void> {
+class GetArticleUseCase
+    implements UseCase<DataState<List<ArticleEntity>>, void> {
   final ArticleRepository _articleRepository;
 
   GetArticleUseCase(this._articleRepository);
